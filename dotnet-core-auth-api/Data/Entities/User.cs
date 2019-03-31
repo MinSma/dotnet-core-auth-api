@@ -10,9 +10,5 @@ namespace dotnet_core_auth_api.Data.Entities
 
         [Required, MaxLength(30)]
         public string LastName { get; set; }
-
-        public int RoleId { get; set; }
-
-        public Role Role { get; set; }
     }
 }

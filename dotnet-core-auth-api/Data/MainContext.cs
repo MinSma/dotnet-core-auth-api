@@ -10,12 +10,6 @@ namespace dotnet_core_auth_api.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<User>()
-                .HasOne(x => x.Role)
-                .WithMany(x => x.Users)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
-
             base.OnModelCreating(builder);
         }
     }

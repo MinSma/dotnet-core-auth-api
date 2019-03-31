@@ -10,8 +10,8 @@ using dotnet_core_auth_api.Data;
 namespace dotnet_core_auth_api.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20190331185950_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20190331211912_AddRoles")]
+    partial class AddRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -169,7 +169,7 @@ namespace dotnet_core_auth_api.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<int>("RoleId");
+                    b.Property<int?>("RoleId");
 
                     b.Property<string>("SecurityStamp");
 
@@ -240,10 +240,9 @@ namespace dotnet_core_auth_api.Migrations
 
             modelBuilder.Entity("dotnet_core_auth_api.Data.Entities.User", b =>
                 {
-                    b.HasOne("dotnet_core_auth_api.Data.Entities.Role", "Role")
+                    b.HasOne("dotnet_core_auth_api.Data.Entities.Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("RoleId");
                 });
 #pragma warning restore 612, 618
         }
